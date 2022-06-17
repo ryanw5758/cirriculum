@@ -1,9 +1,8 @@
-# Main UI REV 1.31
-# 1.31 Changes: displaying images on avatar select screen
-# For 1.4: format widgets correctly, add buttons to select avatar and store variable
+# Main UI REV 1.4
+# 1.4 Changes: display avatars and corresponding buttons to save path
 # 2.0 revision will come upon refactoring into OOP approach
 
-# TODO Next Revision: split into multiple files (incorrect assumption on Python file importing previously), implement scoreboard frame
+# TODO Next Revision: split into multiple files (incorrect assumption on Python file importing previously), implement scoreboard frame, stylize mainMenu frame
 
 # On Pi, need to install modules: tkinter, Pillow
 # cmd line inputs: 
@@ -20,16 +19,23 @@ mainMenu = Frame(root)
 avatarSelect = Frame(root)
 gameScreen = Frame(root)
 
+def SelectAvatar(path):
+    print("Select this avatar: " + path)
+
 def LaunchAvatar():
     print("Entered Avatar Select")
     avatarList = os.listdir(r'C:\Users\Ryan\Desktop\capstone_guidev\avatar_pics')
     labelList = []; buttonList = []; columnNum = 0; rowNum = 0
     for i in range(len(avatarList)):
+        def func(x=i):
+            return SelectAvatar(r'C:\Users\Ryan\Desktop\capstone_guidev\avatar_pics\\'+avatarList[x])
         temp = ImageTk.PhotoImage(Image.open(r'C:\Users\Ryan\Desktop\capstone_guidev\avatar_pics\\'+avatarList[i]).resize((100,100)))
         labelList.append(tk.Label(avatarSelect))
         labelList[i].image = temp
         labelList[i].configure(image = temp)
-        labelList[i].grid(row=rowNum, column=columnNum)
+        labelList[i].grid(row=rowNum, column=columnNum, padx=80, pady=80)
+        buttonList.append(tk.Button(avatarSelect, text="Select", command = func))
+        buttonList[i].grid(row=rowNum, column=columnNum)
         if columnNum == 2:
             rowNum += 1
             columnNum = 0
@@ -87,7 +93,7 @@ def main():
     returnMM_GS = tk.Button(gameScreen, text = "Return to Main Menu", command = lambda:LaunchMM())
     returnMM_GS.pack()
     returnMM_AS = tk.Button(avatarSelect, text = "Return to Main Menu", command = lambda:LaunchMM())
-    returnMM_AS.grid(row = 10, column = 0)
+    returnMM_AS.grid(row = 10, column = 1)
 
     # title: thinking about making something in GIMP or photoshop instead of just a plain label
     titleVar = tk.StringVar()
