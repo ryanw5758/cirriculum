@@ -1,0 +1,217 @@
+***** FCFS Scheduling *****
+t = 0
+CPU: Loading process 0 (CPU Burst = 10)
+Ready queue: 0 1 
+
+t = 10
+CPU: Finishing process 0, loading process 1 (CPU burst = 3)
+Ready queue: 1 2 3 4 
+
+t = 20
+CPU: Finishing process 1, loading process 2 (CPU burst = 7)
+Ready queue: 2 3 4 
+
+t = 30
+CPU: Finishing process 2, loading process 3 (CPU burst = 1)
+Ready queue: 3 4 
+
+t = 40
+CPU: Finishing process 3, loading process 4 (CPU burst = 5)
+Ready queue: 4 
+
+t = 50
+CPU: Running process 4 (CPU burst = -5)
+End of FCFS
+FCFS Summary (WT = wait time, TT = turnaround time) :
+
+PID       WT       TT
+0          0       11
+1         11       33
+2         33       77
+3         77      165
+4          0      341
+
+AVG  22.0 114.0
+
+***** SJF Scheduling *****
+t = 0
+CPU: Loading process 3 (CPU Burst = 1)
+Ready queue: 3 1 4 2 0 
+
+t = 10
+CPU: Finishing process 3, loading process 1 (CPU burst = 3)
+Ready queue: 1 4 2 0 
+
+t = 20
+CPU: Finishing process 1, loading process 4 (CPU burst = 5)
+Ready queue: 4 2 0 
+
+t = 30
+CPU: Finishing process 4, loading process 2 (CPU burst = 7)
+Ready queue: 2 0 
+
+t = 40
+CPU: Finishing process 2, loading process 0 (CPU burst = 10)
+Ready queue: 0 
+
+t = 50
+CPU: Running process 0 (CPU burst = 0)
+End of SJF
+
+SJF Summary (WT = wait time, TT = turnaround time) :
+
+PID       WT       TT
+0          0      341
+1         11       33
+2         77      165
+3          0       11
+4         33       77
+
+AVG  22.0 114.0
+
+***** STCF Scheduling *****
+t = 0
+CPU: Loading process 1 (CPU Burst = 3)
+Ready queue: 1 0 
+
+t = 10
+CPU: Running process 2 (CPU burst = 7)
+Ready queue: 2 3 1 0 
+
+t = 20
+CPU: Running process 4 (CPU burst = 5)
+Ready queue: 4 2 3 1 0 
+
+t = 30
+CPU: Finishing process 2, loading process 4 (CPU burst = -5)
+Ready queue: 4 3 1 0 
+
+t = 40
+CPU: Finishing process 4, loading process 3 (CPU burst = 1)
+Ready queue: 3 1 0 
+
+t = 50
+CPU: Finishing process 3, loading process 1 (CPU burst = -7)
+Ready queue: 1 0 
+
+t = 60
+CPU: Finishing process 1, loading process 0 (CPU burst = 10)
+Ready queue: 0 
+
+t = 70
+CPU: Running process 0 (CPU burst = 0)
+End of STCF
+PID       WT       TT
+0          0     1397
+1        165      693
+2         11       33
+3         77      165
+4          0       33
+
+AVG  46.0 422.0
+
+***** Round Robin Scheduling *****
+t = 0
+CPU: Loading process 1 (CPU Burst = 3)
+Ready queue: 1 0 
+
+t = 10
+CPU: Running process 0 (CPU burst = 10)
+Ready queue: 0 2 3 1 
+
+t = 20
+CPU: Finishing process 1, loading process 4 (CPU burst = 5)
+Ready queue: 4 0 2 3 
+
+t = 30
+CPU: Running process 3 (CPU burst = 1)
+Ready queue: 3 4 0 2 
+
+t = 40
+CPU: Running process 2 (CPU burst = 7)
+Ready queue: 2 3 4 0 
+
+t = 50
+CPU: Running process 0 (CPU burst = 5)
+Ready queue: 0 2 3 4 
+
+t = 60
+CPU: Finishing process 4, loading process 0 (CPU burst = 0)
+Ready queue: 0 2 3 
+
+t = 70
+CPU: Finishing process 3, loading process 0 (CPU burst = -5)
+Ready queue: 0 2 
+
+t = 80
+CPU: Running process 2 (CPU burst = 2)
+Ready queue: 2 0 
+
+t = 90
+CPU: Finishing process 0, loading process 2 (CPU burst = -3)
+Ready queue: 2 
+
+t = 100
+CPU: Running process 2 (CPU burst = -8)
+End of Round Robin
+PID       WT       TT
+0         16     2810
+1          0       16
+2         82     2810
+3         38      346
+4         16       82
+
+AVG     28.0   1103.0
+
+***** Priority Scheduling *****
+t = 0
+CPU: Loading process 1 (CPU Burst = 3)
+Ready queue: 1 0 
+
+t = 10
+CPU: Finishing process 1, loading process 3 (CPU burst = 1)
+Ready queue: 3 2 0 
+
+t = 20
+CPU: Running process 4 (CPU burst = 5)
+Ready queue: 4 3 2 0 
+
+t = 30
+CPU: Finishing process 4, loading process 3 (CPU burst = -9)
+Ready queue: 3 2 0 
+
+t = 40
+CPU: Finishing process 3, loading process 2 (CPU burst = 7)
+Ready queue: 2 0 
+
+t = 50
+CPU: Finishing process 2, loading process 0 (CPU burst = 10)
+Ready queue: 0 
+
+t = 60
+CPU: Running process 0 (CPU burst = 0)
+End of Priority
+PID       WT       TT
+0          0      693
+1          0       11
+2         77      165
+3         11       77
+4          0       11
+
+AVG  16.0 174.0
+
+
+***** OVERALL SUMMARY *****
+
+Average Wait Time Comparison
+1. FCFS    22.0
+2. SJF     22.0
+3. STCF    46.0
+4. RR      28.0
+5. Prio    16.0
+Average Turnaround Time Comparison
+1. FCFS   114.0
+2. SJF    114.0
+3. STCF   422.0
+4. RR    1103.0
+5. Prio   174.0
